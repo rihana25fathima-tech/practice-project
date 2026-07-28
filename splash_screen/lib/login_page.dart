@@ -16,7 +16,7 @@ TextEditingController passwordController =TextEditingController();
 void login(){
   if(usernameController.text=="Rihana" &&
   passwordController.text=="1234"){
-   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const HomePage(),
+   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>  HomePage(),
    ));
   }else{
     showDialog(context:context,
