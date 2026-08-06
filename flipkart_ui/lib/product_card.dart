@@ -33,11 +33,20 @@ SizedBox(height: 10,),
 
 Text(
   name,
-
+style: TextStyle(
+  fontWeight:FontWeight.bold,
+  fontSize: 16,
 ),
+),
+SizedBox(height: 5,),
 
 Text(
   price,
+  style: TextStyle(
+    fontWeight: FontWeight.bold,
+    color: const Color.fromARGB(255, 9, 124, 13),
+    fontSize: 15,
+  ),
 ),
 
 

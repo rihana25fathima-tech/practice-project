@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
              Text("FLUTTER APP",
              style: TextStyle(fontSize: 20,
              color: Colors.white,
-             fontWeight: FontWeight.bold,             ),
+             fontWeight: FontWeight.bold,),
              )
              
             ],
