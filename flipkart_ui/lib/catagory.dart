@@ -27,18 +27,6 @@ class Catagory extends StatelessWidget {
     )
     );
     
-    
-    
-    // Column(
-    //       children: [
-    //         CircleAvatar(
-    //           radius: 25,
-    //           child: Icon(icon),
-    //         ),
-
-    //         SizedBox(height: 5,),
-    //         Text(titile),
-    //       ],
-    // );
+  
   }
 }
