@@ -5,13 +5,15 @@ class ProductCard extends StatelessWidget {
  final String image;
  final String name;
  final String price;
+ final String rating;
 
 
 
   const ProductCard({super.key,
   required this.image,
   required this.name,
-  required this.price,
+  required this.price, 
+  required this.rating,
   });
 
   @override
@@ -50,10 +52,28 @@ Text(
 ),
 
 
+Row(
+  children: [
+    Icon(Icons.star,
+    color: Colors.amber,
+    size: 18,),
+  ],
+),
+
+SizedBox(width: 5,),
+
+
+Text(
+  rating,
+  
+  style: TextStyle(
+    fontWeight: FontWeight.bold,
+    
+    )
+  ),
 
 
 
-           
         ],
       ),
       ),
@@ -61,5 +81,3 @@ Text(
     );
   }
 }
-
-

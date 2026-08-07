@@ -8,6 +8,36 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+  final List<Map<String,String>>products=[
+      {
+        "image" : "assets/images/lap.jpg",
+        "name" : "Laptop",
+        "price" : "680000",
+        "rating" : "2.5",
+      },
+      {
+        "image" : "assets/images/phone.jpg",
+        "name" : "Iphone 15",
+        "price" : "70000",
+        "rating" :"4.5",
+      },
+      {
+        "image" : "assets/images/headphone.jpg",
+        "name" : "Headphone",
+        "price" : "10000",
+        "rating" : "3.0",
+      },
+      {
+        "image" : "assets/images/mouse.jpg",
+        "name" : "Mouse",
+        "price" : "900",
+        "rating" : "2.3",
+      }
+      ];
+
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(241, 241, 244, 1),
@@ -43,73 +73,9 @@ class Homepage extends StatelessWidget {
             ),
 
 
-            // SizedBox(height: 30),
-            // //rowssssss
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   children: [
-            //     Column(
-            //       children: [
-            //         CircleAvatar(child: Icon(Icons.local_offer)),
-            //         Text("Top offer"),
-            //       ],
-            //     ),
+            
 
-            //     Column(
-            //       children: [
-            //         CircleAvatar(child: Icon(Icons.smartphone)),
-            //         Text("Mobiles"),
-            //       ],
-            //     ),
-
-            //     Column(
-            //       children: [
-            //         CircleAvatar(child: Icon(Icons.checkroom)),
-            //         Text("Fashion"),
-            //       ],
-            //     ),
-
-            //     Column(
-            //       children: [
-            //         CircleAvatar(child: Icon(Icons.devices)),
-            //         Text("Electronic"),
-            //       ],
-            //     ),
-            //   ],
-            // ),
-
-            // SizedBox(height: 20,),
-
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   children: [
-            //     Column(
-            //       children: [
-            //         CircleAvatar(child: Icon(Icons.chair)),
-            //         Text("Furniture"),
-            //       ],
-            //     ),
-            //     Column(
-            //       children: [
-            //         CircleAvatar(child: Icon(Icons.face_retouching_natural)),
-            //         Text("Beauty"),
-            //       ],
-            //     ),
-            //     Column(
-            //       children: [
-            //         CircleAvatar(child: Icon(Icons.laptop)),
-            //         Text("Laptop"),
-            //       ],
-            //     ),
-
-            //     Column(
-            //       children: [
-            //         CircleAvatar(child: Icon(Icons.menu_book)),
-            //         Text("Books"),
-            //       ],
-            //     ),
-            //   ],
-            // ),
+            
          
           SizedBox(height: 20),
           Container(
@@ -153,12 +119,6 @@ SizedBox(
 
 
 
-
-
-
-
-
-
           
 // product card
            SizedBox(height: 15,),
@@ -171,39 +131,26 @@ SizedBox(
    
         SizedBox(height: 15,),
 
-SizedBox(
-  height: 240,
-child: ListView(
-  scrollDirection: Axis.horizontal,
-children: [
-              ProductCard(
-                image:"assets/images/lap.jpg",
-                name:"Laptop",
-                price:"68000",        
-                ),
-              
-              ProductCard(
-                image:"assets/images/phone.jpg",
-                name:"Iphone 15",
-                price:"700000",
-              ),
 
-              ProductCard(
-                image:"assets/images/headphone.jpg",
-                name:"Iphone 15",
-                price:"700000",
-              ),
-              ProductCard(
-                image:"assets/images/mouse.jpg",
-                name:"Iphone 15",
-                price:"700000",
+      SizedBox(
+  height: 250,
+  child: ListView.builder(
+    scrollDirection: Axis.horizontal,
+    itemCount: products.length,
+    itemBuilder: (context, index) {
+      return ProductCard(
+        image: products[index]["image"]!,
+        name: products[index]["name"]!,
+        price: products[index]["price"]!,
+        rating : products[index]["rating"]!
 
-              ),
-            ],
-),
+        
+      );
+    },
+  ),
 ),
 
-      
+
           ],
         ),
       ),
