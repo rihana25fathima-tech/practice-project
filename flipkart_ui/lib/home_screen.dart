@@ -1,4 +1,8 @@
+import 'package:flipkart_ui/account_page.dart';
+import 'package:flipkart_ui/cart_page.dart';
 import 'package:flipkart_ui/catagory.dart';
+import 'package:flipkart_ui/home.dart';
+import 'package:flipkart_ui/order_page.dart';
 import 'package:flipkart_ui/product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -34,14 +38,80 @@ class HomeScreen extends StatelessWidget {
       },
     ];
 
+    List<Map<String, dynamic>> Catagories = [
+      {"icon": Icons.local_offer, "title": "Top offers"},
+      {"icon": Icons.smartphone, "title": "Mobile phones"},
+      {"icon": Icons.laptop, "title": "Laptop"},
+      {"icon": Icons.chair, "title": "Chairs"},
+      {"icon": Icons.watch, "title": "Watches"},
+      {"icon": Icons.headphones, "title": "Headphones"},
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(241, 241, 244, 1),
-        // title: Text("Flipkart", style: TextStyle(fontWeight: FontWeight.bold)),
-        // centerTitle: true,
-        title: Image.asset("assets/images/logo.jpg", height: 340),
-        centerTitle: true,
+        toolbarHeight: 60,
+        title: Padding(padding: EdgeInsets.only(bottom: 22,left: 60),
+        child:Row(
+          children: [
+          Text(
+            "Flipkart",
+            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,
+            ),
+          ),
+
+          SizedBox(width: 4,),
+
+          Image.asset("assets/images/flip.jpg",
+          width: 35,
+          height: 35,
+          ),
+          ],
+        ),
+        ),
       ),
+
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(child: Text("Flipkart",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              onTap: () {
+                Navigator.pop(context,
+                MaterialPageRoute(builder: (context) => Homepage(),));
+              },
+            ),
+                      ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text("Cart"),
+              onTap: () {
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CartPage(),));
+              },
+            ),
+                      ListTile(
+              leading: Icon(Icons.receipt_long),
+              title: Text("Orders"),
+              onTap: () {
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => OrderPage(),));
+              },
+            ),
+                      ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Account"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountPage(),));
+              },
+            ),
+          ],
+        ),
+      ),
+    
+    
 
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -59,7 +129,7 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     SizedBox(width: 15),
-                    Icon(Icons.search, size: 30),
+                    Icon(Icons.search, size: 60),
                     SizedBox(width: 10),
                     Text("Search for products"),
                   ],
@@ -82,39 +152,30 @@ class HomeScreen extends StatelessWidget {
               //catagries
               SizedBox(height: 20),
 
+             
               SizedBox(
                 height: 100,
-                child: ListView(
+                child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.symmetric(horizontal: 10),
-                  children: [
-                    Catagory(icon: Icons.local_offer, titile: "Top offers"),
-                    SizedBox(width: 20),
-                    Catagory(icon: Icons.smartphone, titile: "Mobile phones"),
-                    SizedBox(width: 20),
-                    Catagory(icon: Icons.laptop, titile: "Laptop"),
-                    SizedBox(width: 20),
-                    Catagory(icon: Icons.chair, titile: "Chairs"),
-                    Catagory(icon: Icons.local_offer, titile: "Top offers"),
-                    SizedBox(width: 20),
-                    Catagory(icon: Icons.smartphone, titile: "Mobile phones"),
-                    SizedBox(width: 20),
-                    Catagory(icon: Icons.laptop, titile: "Laptop"),
-                    SizedBox(width: 20),
-                    Catagory(icon: Icons.chair, titile: "Chairs"),
-                  ],
+                  itemCount: Catagories.length,
+                  itemBuilder: (context, index) {
+                   final item = Catagories[index];
+
+                    return Padding(
+                      padding: EdgeInsets.only(right: 20),
+                      child: Catagory(
+                        icon: item["icon"],
+                        titile: item["title"],
+                      ),
+                    );
+                  },
                 ),
               ),
 
               // product card
-              SizedBox(height: 15),
+              
 
-              Text(
-                "Best Deals",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-              ),
-
-              SizedBox(height: 15),
 
               SizedBox(
                 height: 250,

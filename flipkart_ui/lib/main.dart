@@ -12,6 +12,22 @@ class Flipcard extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Flipcard ui",
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color.fromARGB(255, 241, 235, 235),
+        
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.from(alpha: 1, red: 0.475, green: 0.655, blue: 0.804),
+        ),
+       appBarTheme: AppBarTheme(
+        backgroundColor: Color(0xFF2874F0),
+        foregroundColor: const Color.fromARGB(255, 247, 240, 240),
+       ),
+       textTheme: TextTheme(
+        titleLarge: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+       ),
+
+      ),
       home: Homepage(
 
       ),
