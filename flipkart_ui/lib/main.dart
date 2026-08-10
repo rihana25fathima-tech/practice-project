@@ -24,7 +24,9 @@ class Flipcard extends StatelessWidget {
        textTheme: TextTheme(
         titleLarge: TextStyle(
           fontWeight: FontWeight.bold,
+          fontSize: 20
         ),
+        bodyMedium: TextStyle(fontSize: 14,)
        ),
 
       ),

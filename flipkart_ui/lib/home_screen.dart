@@ -1,6 +1,7 @@
 import 'package:flipkart_ui/account_page.dart';
 import 'package:flipkart_ui/cart_page.dart';
 import 'package:flipkart_ui/catagory.dart';
+import 'package:flipkart_ui/constants/strings.dart';
 import 'package:flipkart_ui/home.dart';
 import 'package:flipkart_ui/order_page.dart';
 import 'package:flipkart_ui/product_card.dart';
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     final List<Map<String, String>> products = [
       {
         "image": "assets/images/lap.jpg",
@@ -50,12 +52,12 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 60,
-        title: Padding(padding: EdgeInsets.only(bottom: 22,left: 60),
+        title: Padding(padding: EdgeInsets.only(bottom: 2,left: 50),
         child:Row(
           children: [
           Text(
             "Flipkart",
-            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,
+            style: TextStyle(fontWeight: FontWeight.bold,fontSize: screenWidth * 0.075,
             ),
           ),
 
@@ -68,12 +70,25 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {}, 
+            icon: Icon(Icons.notifications),
+          ),
+
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage(),));
+          },
+          icon: Icon(Icons.shopping_cart),
+          ),
+        ],
       ),
 
       drawer: Drawer(
+      
         child: ListView(
           children: [
-            DrawerHeader(child: Text("Flipkart",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),),
+            DrawerHeader(child: Text(AppStrings.appName,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),),
             ListTile(
               leading: Icon(Icons.home),
               title: Text("Home"),
@@ -114,7 +129,7 @@ class HomeScreen extends StatelessWidget {
     
 
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(screenWidth * 0.05),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -129,16 +144,24 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     SizedBox(width: 15),
-                    Icon(Icons.search, size: 60),
+                    Icon(Icons.search, size: 40),
                     SizedBox(width: 10),
-                    Text("Search for products"),
+
+                    Expanded(child: TextField(
+                      decoration: InputDecoration(
+                        hintText: AppStrings.searchHint,
+                        border: InputBorder.none,
+                      ),
+                    ))
+
+
                   ],
                 ),
-              ),
+              ), 
 
               SizedBox(height: 20),
               Container(
-                height: 180,
+                height: screenWidth * 0.45,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -154,16 +177,16 @@ class HomeScreen extends StatelessWidget {
 
              
               SizedBox(
-                height: 100,
+                height: screenWidth * 0.25,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.025),
                   itemCount: Catagories.length,
                   itemBuilder: (context, index) {
                    final item = Catagories[index];
 
                     return Padding(
-                      padding: EdgeInsets.only(right: 20),
+                      padding: EdgeInsets.only(right: screenWidth * 0.05),
                       child: Catagory(
                         icon: item["icon"],
                         titile: item["title"],
@@ -174,24 +197,23 @@ class HomeScreen extends StatelessWidget {
               ),
 
               // product card
-              
+              SizedBox(height: 20),
 
+            GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: products.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: screenWidth > 600 ? 3:2,crossAxisSpacing: 10,mainAxisSpacing: 10,childAspectRatio: 0.69),
+             itemBuilder:(context, index) {
+              return ProductCard(
+                image: products[index]["image"]!,
+               name: products[index]["name"]!,
+                price:products[index]["price"]! , 
+                rating: products[index]["rating"]!,
+                );
+               
+             },),
 
-              SizedBox(
-                height: 250,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: products.length,
-                  itemBuilder: (context, index) {
-                    return ProductCard(
-                      image: products[index]["image"]!,
-                      name: products[index]["name"]!,
-                      price: products[index]["price"]!,
-                      rating: products[index]["rating"]!,
-                    );
-                  },
-                ),
-              ),
             ],
           ),
         ),
