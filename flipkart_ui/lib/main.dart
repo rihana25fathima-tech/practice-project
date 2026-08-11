@@ -1,4 +1,5 @@
 import 'package:flipkart_ui/home.dart';
+import 'package:flipkart_ui/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -30,7 +31,7 @@ class Flipcard extends StatelessWidget {
        ),
 
       ),
-      home: Homepage(
+      home: SplashScreen(
 
       ),
     );
