@@ -1,3 +1,4 @@
+import 'package:flipkart_ui/constants/colors.dart';
 import 'package:flipkart_ui/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,19 +13,42 @@ class _LoginPageState extends State<LoginPage> {
 
 TextEditingController usernameController =TextEditingController();
 TextEditingController passwordController =TextEditingController();
+TextEditingController numberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
 
     
     
     
+    
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 232, 219, 102),
+      appBar: AppBar(
+        backgroundColor: AppColors.white,
+        toolbarHeight: 100,
+        title: Padding(padding: EdgeInsets.only(bottom: 2,left: 60),
+        child: Row(
+          children: [
+            // Text("Flipkart",
+            // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50,color: const Color.fromARGB(255, 7, 122, 215)),
+            // ),
+            
+            Image.asset("assets/images/flip.jpg",
+            width: 40,
+            height: 40,),
+             SizedBox(width: 20,),
+             Text("Flipkart",
+            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50,color: const Color.fromARGB(255, 7, 122, 215)),
+            ),
+          ],
+        ),
+        ),
+      ),
+      backgroundColor: AppColors.white,
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
-            SizedBox(height: 100,),
+            SizedBox(height: 30,),
             
             Center(
               child: Text("Login",
@@ -60,12 +84,27 @@ TextEditingController passwordController =TextEditingController();
                     )
                   )
                 ),
+                SizedBox(height: 20,),
+                TextField(
+                  controller: numberController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: "Your phone number",
+                    labelText: "Mobile number",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
                
                SizedBox(height: 25,),
                SizedBox(
+                
                 width: double.infinity,
                 height: 50,
+                
                 child: ElevatedButton(
+                  
                   onPressed: () {
                      if(usernameController.text == "Rihana" &&
                      passwordController.text == "1234"
@@ -89,7 +128,13 @@ TextEditingController passwordController =TextEditingController();
                      }
                      
                 },
-                child: Text("Login"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 24, 140, 235),
+                  foregroundColor: Colors.white,
+                ),
+                child: Text("Login",style: TextStyle(
+                  fontSize: 23,
+                ),),
                 ),
                )
 
