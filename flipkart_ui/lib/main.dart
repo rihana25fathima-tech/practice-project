@@ -1,4 +1,3 @@
-import 'package:flipkart_ui/home.dart';
 import 'package:flipkart_ui/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,7 @@ class Flipcard extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flipcard ui",
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 241, 235, 235),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 240, 236, 236),
         
         colorScheme: ColorScheme.fromSeed(seedColor: Color.from(alpha: 1, red: 0.475, green: 0.655, blue: 0.804),
         ),

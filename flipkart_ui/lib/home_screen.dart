@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 60,
+        toolbarHeight: 50,
         title: Padding(padding: EdgeInsets.only(bottom: 2,left: 50),
         child:Row(
           children: [
@@ -144,7 +144,7 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     SizedBox(width: 15),
-                    Icon(Icons.search, size: 40),
+                    Icon(Icons.search, size: 30),
                     SizedBox(width: 10),
 
                     Expanded(child: TextField(

@@ -1,13 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_insurance/home.dart';
 
-class Insurace extends StatelessWidget {
-  const Insurace({super.key});
+void main(){
+  runApp(Insurance());
+}
+class Insurance extends StatelessWidget {
+  const Insurance({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Insurance card",
+      title: "insurance app" ,
       home: Homepage(),
     );
   }
