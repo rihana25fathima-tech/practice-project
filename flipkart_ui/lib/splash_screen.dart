@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flipkart_ui/home_screen.dart';
+import 'package:flipkart_ui/Login_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Timer(Duration(seconds: 2),() {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(),
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(),
       ),);
     },);
   }

@@ -1,3 +1,4 @@
+import 'package:flipkart_ui/Login_page.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatelessWidget {
@@ -59,7 +60,9 @@ class AccountPage extends StatelessWidget {
          ListTile(
           leading: Icon(Icons.logout),
           title: Text("Logout"),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage(),), (route) => false,);
+          },
          ),
       ],
      ),
