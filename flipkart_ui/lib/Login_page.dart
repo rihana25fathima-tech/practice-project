@@ -1,5 +1,6 @@
 import 'package:flipkart_ui/constants/colors.dart';
-import 'package:flipkart_ui/home_screen.dart';
+import 'package:flipkart_ui/home.dart';
+// import 'package:flipkart_ui/homepage.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -33,11 +34,11 @@ TextEditingController numberController = TextEditingController();
             // ),
             
             Image.asset("assets/images/flip.jpg",
-            width: 40,
-            height: 40,),
+            width: 35,
+            height: 30,),
              SizedBox(width: 20,),
              Text("Flipkart",
-            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50,color: const Color.fromARGB(255, 7, 122, 215)),
+            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: const Color.fromARGB(255, 7, 122, 215)),
             ),
           ],
         ),
@@ -109,7 +110,7 @@ TextEditingController numberController = TextEditingController();
                      if(usernameController.text == "Rihana" &&
                      passwordController.text == "1234"
                      ){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),),);
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homepage(),),);
                      }else{
                       showDialog(context: context, builder: (context) {
                         return AlertDialog(
