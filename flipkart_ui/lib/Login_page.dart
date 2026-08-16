@@ -36,7 +36,7 @@ TextEditingController numberController = TextEditingController();
             Image.asset("assets/images/flip.jpg",
             width: 35,
             height: 30,),
-             SizedBox(width: 20,),
+             SizedBox(width: 10,),
              Text("Flipkart",
             style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: const Color.fromARGB(255, 7, 122, 215)),
             ),

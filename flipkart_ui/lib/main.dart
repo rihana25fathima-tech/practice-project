@@ -19,8 +19,9 @@ class Flipcard extends StatelessWidget {
         ),
        appBarTheme: AppBarTheme(
         backgroundColor: Color(0xFF2874F0),
-        foregroundColor: const Color.fromARGB(255, 247, 240, 240),
+        foregroundColor: const Color.fromARGB(255, 247, 243, 243),
        ),
+       
        textTheme: TextTheme(
         titleLarge: TextStyle(
           fontWeight: FontWeight.bold,

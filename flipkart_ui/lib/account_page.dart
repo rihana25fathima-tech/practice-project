@@ -1,4 +1,5 @@
 import 'package:flipkart_ui/Login_page.dart';
+import 'package:flipkart_ui/order_page.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatelessWidget {
@@ -45,7 +46,9 @@ class AccountPage extends StatelessWidget {
          ListTile(
           leading: Icon(Icons.shopping_bag),
           title: Text("My orders"),
-          onTap: () {},
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>OrderPage() ,));
+          },
          ),
          ListTile(
           leading: Icon(Icons.favorite),
