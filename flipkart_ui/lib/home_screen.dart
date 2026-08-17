@@ -2,7 +2,6 @@ import 'package:flipkart_ui/account_page.dart';
 import 'package:flipkart_ui/cart_page.dart';
 import 'package:flipkart_ui/catagory.dart';
 import 'package:flipkart_ui/constants/strings.dart';
-import 'package:flipkart_ui/home.dart';
 import 'package:flipkart_ui/order_page.dart';
 import 'package:flipkart_ui/product_card.dart';
 import 'package:flutter/material.dart';
