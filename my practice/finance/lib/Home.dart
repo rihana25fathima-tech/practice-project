@@ -1,12 +1,13 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        child : SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Column(
@@ -71,7 +72,7 @@ class Homepage extends StatelessWidget {
                     ),
                     SizedBox(height: 45),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
@@ -93,7 +94,7 @@ class Homepage extends StatelessWidget {
                                 fontSize: 20,
                               ),
                             ),
-                            SizedBox(width: 160),
+                            Spacer(),
                             Text(
                               "08/20",
                               style: TextStyle(
@@ -111,85 +112,225 @@ class Homepage extends StatelessWidget {
 
               // containerinte shesham
               SizedBox(height: 50),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              // Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: const Color.fromARGB(255, 221, 113, 240),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: const Color.fromARGB(255, 221, 113, 240),
+                          ),
+                          child: Icon(Icons.telegram, size: 35),
                         ),
-                        child: Icon(Icons.telegram, size: 35),
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Transfer",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                        SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Transfer",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            "1236,00",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                            SizedBox(height: 5),
+                            Text(
+                              "1236,00",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  
+
                   // next row
-                  SizedBox(width: 50,),
-                  Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: const Color.fromARGB(255, 109, 236, 130),
+                  SizedBox(width: 15),
+
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: const Color.fromARGB(255, 109, 236, 130),
+                          ),
+                          child: Icon(Icons.telegram, size: 35),
                         ),
-                        child: Icon(Icons.telegram, size: 35),
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Request",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                        SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Request",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            "4000,00",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                            SizedBox(height: 5),
+                            Text(
+                              "4000,00",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-            ],
-          ),
+
+              //SEND
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Send to",
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "view all  >",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(height: 15),
+
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    person("Hena", Icons.person),
+                    person("Hena", Icons.person),
+                    person("Hena", Icons.person),
+                    person("Hena", Icons.person),
+                    person("Hena", Icons.person),
+
+                    person("Hena", Icons.person),
+                    person("Hena", Icons.person),
+                    person("Hena", Icons.person),
+                  ],
+                ),
+              ),
+
+          
+        SizedBox(height: 30,),
+
+        // transiction
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Transection",
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+
+            Text(
+              "today  >",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
+
+        //container
+        SizedBox(height: 20),
+
+        Container(
+          height: 60,
+          width: double.infinity,
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.grey.shade400,
+          ),
+          child: Row(
+            children: [
+                  Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+                    child:clip
+                    child: Image.asset("assets/images/udamy.jpg",fit: BoxFit.cover,),
+                  ),
+                ],
+              ),
+
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                      children: [
+                        Text("Udemy",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
+                      SizedBox(height: 6,),
+                      
+                        Text("Udemy",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
+                      ],
+                        )
+                      ],
+                  ),
+                  SizedBox(width: 30,),
+                   Row(
+                    children: [ 
+                      Text("5677889"),
+                    ],
+                   ),
+                ],
+              )
+            
+          ),
+                ],
+        ),
+            ],
+      ),
+      ),
+        ),
+      ),
+      );
+  
+  }
+
+  Widget person(String name, IconData icon) {
+    return Container(
+      width: 70,
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 28,
+            backgroundColor: Colors.grey.shade200,
+            child: Icon(Icons.person, size: 30, color: Colors.grey),
+          ),
+
+          SizedBox(height: 6),
+          Text(
+            name,
+            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+          ),
+        Icon(
+  icon,
+  size: 30,
+  color: Colors.grey,
+),
+
+        ],
       ),
     );
   }
