@@ -11,7 +11,7 @@ class Finance extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Finance",
+      title: "fionance",
       home: Homepage(),
     );
   }
