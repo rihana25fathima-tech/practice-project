@@ -141,7 +141,7 @@ SizedBox(width: 90,),
             width: 50,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: const Color.fromARGB(255, 248, 204, 204)
+                color: Colors.blue.shade300
             ),
             padding:  EdgeInsets.all(10),
             child: Text("All",style: TextStyle(fontSize: 20),),
@@ -152,7 +152,7 @@ SizedBox(width: 30,),
             width: 100,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: const Colors
+                color: Colors.blue.shade300
             ),
             padding:  EdgeInsets.all(10),
             child: Text("income",style: TextStyle(fontSize: 20),),
@@ -164,18 +164,168 @@ SizedBox(width: 30,),
             width: 100,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: const Color.fromARGB(255, 248, 204, 204)
+                color: Colors.blue.shade300
             ),
             padding:  EdgeInsets.all(10),
             child: Text("Expences",style: TextStyle(fontSize: 20),),
           )
         ],
-      )
+      ),
+
+      SizedBox(height: 40,),
+      Text("today",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+      Container(
+        width: double.infinity,
+        height: 100,
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(Icons.local_grocery_store,size: 20,),
+SizedBox(width: 20,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Grocery."),
+                Text("Facility downtown")
+              ],
+            ),
+            SizedBox(width: 100,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("345"),
+                Text("aug 20"),
+              ],
+            )
+          ],
+        ),
+      ),
+
+SizedBox(height: 5,),
+ Container(
+        width: double.infinity,
+        height: 100,
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(Icons.local_grocery_store,size: 20,),
+SizedBox(width: 20,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Grocery."),
+                Text("Facility downtown")
+              ],
+            ),
+            SizedBox(width: 100,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("345"),
+                Text("aug 20"),
+              ],
+            )
+          ],
+        ),
+      ),
+
+// next
+SizedBox(height: 40,),
+      Text("Yester day",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+      Container(
+        width: double.infinity,
+        height: 100,
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(Icons.local_grocery_store,size: 20,),
+SizedBox(width: 20,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Grocery."),
+                Text("Facility downtown")
+              ],
+            ),
+            SizedBox(width: 100,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("345"),
+                Text("aug 20"),
+              ],
+            )
+          ],
+        ),
+      ),
+
+SizedBox(height: 5,),
+ Container(
+        width: double.infinity,
+        height: 100,
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(Icons.local_grocery_store,size: 20,),
+SizedBox(width: 20,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Grocery."),
+                Text("Facility downtown")
+              ],
+            ),
+            SizedBox(width: 100,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("345"),
+                Text("aug 20"),
+              ],
+            )
+          ],
+        ),
+      ),
+
       
       ],),
       )),
       ),
-      );
+
+      bottomNavigationBar: BottomNavigationBar(items: [
+        
+        BottomNavigationBarItem(icon: Icon(Icons.home),label: "home"),
+        BottomNavigationBarItem(icon: Icon(Icons.home),label: "home"),
+        BottomNavigationBarItem(icon: Icon(Icons.home),label: "home"),
+        BottomNavigationBarItem(icon: Icon(Icons.home),label: "home"),
+        BottomNavigationBarItem(icon: Icon(Icons.home),label: "home"),
+        ],
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.orange,
+        ), 
+       );
+      
     
   }
+
 }

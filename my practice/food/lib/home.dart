@@ -35,10 +35,10 @@ class Homepage extends StatelessWidget {
     return Scaffold(
     
       body: SafeArea(child : SingleChildScrollView(
-        child: Padding(padding: EdgeInsets.all(20),
+        child: Padding(padding: EdgeInsets.all(2),
       child: Column(
         children: [
-          child:   Row(
+         Row(
             children: [
               Icon(Icons.location_on_outlined,size: 30,),
               SizedBox(width: 5,),
@@ -54,16 +54,18 @@ class Homepage extends StatelessWidget {
                ],
               ),
               Spacer(),
-              Icon(Icons.notifications)
+              Icon(Icons.notifications,
+              ),
             ],
-          ),
-          ),
-        ),
-      ),
+              ),
+            
+        
+        
       
-      ),
       
-          //serch_ bo)x
+    
+      
+      //serch_ bo)x
 SizedBox(height: 30,),
 
 Row(children: [
@@ -163,9 +165,9 @@ Row(children: [
   Expanded(child: 
 Container(
  margin: EdgeInsets.only(right: 8),
-  decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(20),
-  ),
+//   decoration: BoxDecoration(
+//     borderRadius: BorderRadius.circular(20),
+//   ),
 
   child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -232,48 +234,111 @@ Row(
   ],
 ),
 
-SizedBox(height: 2,),
+SizedBox(height: 10,),
 Row(
   children: [
     Expanded(child: Container(
       margin: EdgeInsets.only(right: 9),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      // decoration: BoxDecoration(
+      //   borderRadius: BorderRadius.circular(20),
+      // ),
     child: Column(
       children: [
-        Image.asset("assets/images/food3.jpg"),
+        ClipRRect(
+        borderRadius: BorderRadiusGeometry.circular(10),
+        child:  Image.asset("assets/images/food3.jpg",fit: BoxFit.cover,width: double.infinity,height: 90,) ,
+        ),
+        SizedBox(height: 5,),
+        Text("veg Noodles",style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),),
+        Text("120",style: TextStyle(fontWeight: FontWeight.bold),),
       ],
     ), 
-    ))
+    ),
+    ),
+
+    //next
+
+    Expanded(child: Container(
+      padding: EdgeInsets.only(right: 9),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(10),
+            child: Image.asset("assets/images/food4.jpg",fit: BoxFit.cover,height: 90,width: double.infinity,),
+          ), SizedBox(height: 5,),
+          Text("pruwns fry",style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),),
+          Text("150",style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),),
+        ],
+      ),
+    ),),
+
+    // next
+
+    
+    Expanded(child: Container(
+      padding: EdgeInsets.only(right: 9),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(10),
+            child: Image.asset("assets/images/food5.jpg",fit: BoxFit.cover,height: 90,width: double.infinity,),
+          ), SizedBox(height: 5,),
+          Text("Egg special",style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),),
+          Text("190",style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),)
+        ],
+      ),
+    ),),
+
   ],
-)
+),
 
 
-
-  
-
-
-
-
-  
-
-        
-)
-
-
-
-
-
-
-
-        
-          );
-      
+        ],
+      ),
+),
         
       
 
+      ),
+// bottom navigation bar
+      ),  
+bottomNavigationBar: BottomNavigationBar(
+  
+
+  selectedItemColor: Colors.orange,
+  unselectedItemColor: Colors.grey,
+  items: const [
+  BottomNavigationBarItem(icon: Icon(Icons.home),
+  label: "Home",
+  ),
+
+  BottomNavigationBarItem(icon: Icon(Icons.search),
+  label: "Search",
+  ),
+  BottomNavigationBarItem(icon: Icon(Icons.shopping_bag),
+  label: "Cart",
+  ),
+  BottomNavigationBarItem(icon: Icon(Icons.favorite),
+  label: "Favorite",
+  ),
+  BottomNavigationBarItem(icon: Icon(Icons.person),
+  label: "Account",
+  ),
+]),
 
 
+      
+      
+        );
   }
   }
