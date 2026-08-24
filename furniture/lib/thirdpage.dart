@@ -355,6 +355,7 @@ class _ThirdpageState extends State<Thirdpage> {
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(15),
+                                    border: Border.all(color: Colors.black),
                                   ),
                                   child: OutlinedButton(
                                     onPressed: () {
@@ -367,8 +368,12 @@ class _ThirdpageState extends State<Thirdpage> {
                                           ),
                                           duration: Duration(seconds: 1),
                                         ),
+                                      
                                       );
                                     },
+                                    style: OutlinedButton.styleFrom(
+                                      side: BorderSide.none,
+                                    ),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -397,12 +402,17 @@ class _ThirdpageState extends State<Thirdpage> {
                                     color:Color(0xffD99418),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
-                                  child: OutlinedButton(
+                                  child: ElevatedButton(
                                     onPressed: () {},
+                                     style: ElevatedButton.styleFrom(
+                                      side: BorderSide.none,
+                                      backgroundColor: Color(0xffD99418)
+                                    ),
                                     child: Text(
                                       "Add to Cart",
                                       style: TextStyle(color: Colors.black),
                                     ),
+                                    
                                   ),
                                 ),
                               ),
