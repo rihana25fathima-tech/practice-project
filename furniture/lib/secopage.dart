@@ -272,8 +272,8 @@ class _Secound_pageState extends State<Secound_page> {
                   itemCount: products.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
                     childAspectRatio: 0.73,
                   ),
                   itemBuilder: (context, index) {

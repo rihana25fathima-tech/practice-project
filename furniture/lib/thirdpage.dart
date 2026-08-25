@@ -17,16 +17,13 @@ class _ThirdpageState extends State<Thirdpage> {
     "assets/images/table42.jpg",
     "assets/images/table43.jpg",
   ];
-
   //colors
-
   final List<Color> colours = [
     const Color(0xff75401F),
     const Color(0xffC7A55D),
     const Color(0xff80583A),
     const Color(0xffD5D5D5),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,10 +31,9 @@ class _ThirdpageState extends State<Thirdpage> {
       body: SafeArea(
         child: Column(
           children: [
-            // ================= TOP BAR =================
+            // == TOP BAR ==
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -72,7 +68,7 @@ class _ThirdpageState extends State<Thirdpage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    // ==========MAIN PRODUCT IMAGE =================
+                    // ==MAIN PRODUCT IMAGE ===
                     Container(
                       height: 260,
                       width: double.infinity,
@@ -90,7 +86,6 @@ class _ThirdpageState extends State<Thirdpage> {
                       ),
                     ),
                     SizedBox(height: 15),
-
                     //
                     SizedBox(
                       height: 60,
@@ -128,7 +123,7 @@ class _ThirdpageState extends State<Thirdpage> {
                         },
                       ),
                     ),
-
+                    SizedBox(height: 10),
                     //texts
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 17),
@@ -137,7 +132,7 @@ class _ThirdpageState extends State<Thirdpage> {
                         children: [
                           // CATEGORY
                           const Text(
-                            "CHAIRS",
+                            "MODERN DINING TABLE",
                             style: TextStyle(
                               fontSize: 12,
                               color: Color(0xffC18A24),
@@ -146,36 +141,32 @@ class _ThirdpageState extends State<Thirdpage> {
                             ),
                           ),
                           SizedBox(height: 5),
-
                           // NAME + PRICE
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Expanded(
                                 child: Text(
-                                  "Botero Lounge Chair",
+                                  "Modern Oval Dining Table",
                                   style: TextStyle(
                                     fontSize: 25,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                               ),
-
                               const SizedBox(width: 10),
-
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   const Text(
-                                    "\$890",
+                                    "\$16,999",
                                     style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-
                                   Text(
-                                    "\$1,100",
+                                    "\$18,999",
                                     style: TextStyle(
                                       fontSize: 13,
                                       color: Colors.grey.shade500,
@@ -186,11 +177,9 @@ class _ThirdpageState extends State<Thirdpage> {
                               ),
                             ],
                           ),
-
-                          const SizedBox(height: 5),
+                          const SizedBox(height: 3),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
-
                             children: [
                               // CATEGORY
                               const SizedBox(height: 5),
@@ -203,11 +192,9 @@ class _ThirdpageState extends State<Thirdpage> {
                                   ),
                                 ],
                               ),
-
                               const SizedBox(width: 8),
-
                               const Text(
-                                "4.9 · 248 reviews",
+                                "4.8 · 248 reviews",
                                 style: TextStyle(
                                   fontSize: 13,
                                   color: Colors.grey,
@@ -216,19 +203,18 @@ class _ThirdpageState extends State<Thirdpage> {
                             ],
                           ),
                           const SizedBox(height: 10),
-
-                          // ================= DESCRIPTION =================
+                          // === DESCRIPTION =====
                           const Text(
-                            "Premium leather, solid wood frame, "
-                            "W72 × D80 × H86cm.",
+                            "Premium Oval shape solid wood frame,"
+                            "W72 × D36 × H30in",
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
                               height: 1.5,
                             ),
                           ),
-                          //colour
-                          const SizedBox(height: 20),
+                          //colourr
+                          const SizedBox(height: 15),
                           const Text(
                             "COLOUR",
                             style: TextStyle(
@@ -238,7 +224,6 @@ class _ThirdpageState extends State<Thirdpage> {
                             ),
                           ),
                           const SizedBox(height: 10),
-
                           Row(
                             children: List.generate(colours.length, (index) {
                               return GestureDetector(
@@ -271,8 +256,7 @@ class _ThirdpageState extends State<Thirdpage> {
                               );
                             }),
                           ),
-
-                          //material
+                          //======material====
                           const SizedBox(height: 20),
                           Text(
                             "MATERIAL",
@@ -282,34 +266,12 @@ class _ThirdpageState extends State<Thirdpage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-
                           SizedBox(height: 10),
-
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(
                                 padding: EdgeInsets.all(5),
-
-                                height: 30,
-                                width: 70,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: const Color.fromARGB(255, 42, 40, 40),
-                                ),
-                                child: Text(
-                                  "wood",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 5),
-                              Container(
-                                padding: EdgeInsets.all(5),
-
                                 height: 30,
                                 width: 70,
                                 alignment: Alignment.center,
@@ -318,14 +280,31 @@ class _ThirdpageState extends State<Thirdpage> {
                                   border: Border.all(color: Colors.black),
                                 ),
                                 child: Text(
-                                  "Leather",
+                                  "wood",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: const Color.fromARGB(255, 14, 12, 1),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 5),
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                height: 30,
+                                width: 70,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(color: Colors.black),
+                                ),
+                                child: Text(
+                                  "Marble",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
                               SizedBox(width: 5),
                               Container(
                                 padding: EdgeInsets.all(5),
-
                                 height: 30,
                                 width: 70,
                                 alignment: Alignment.center,
@@ -335,7 +314,7 @@ class _ThirdpageState extends State<Thirdpage> {
                                   border: Border.all(color: Colors.black),
                                 ),
                                 child: Text(
-                                  "Boucle",
+                                  "Oak",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
@@ -344,8 +323,80 @@ class _ThirdpageState extends State<Thirdpage> {
                               ),
                             ],
                           ),
+                          // =====size====
+                          SizedBox(height: 8),
+                          Text(
+                            "SIZE",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                height: 30,
+                                width: 70,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(color: Colors.black),
+                                ),
+                                child: Text(
+                                  "4 Seater",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: const Color.fromARGB(
+                                      255,
+                                      17,
+                                      12,
+                                      12,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 5),
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                height: 30,
+                                width: 70,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(color: Colors.black),
+                                ),
+                                child: Text(
+                                  "6 Seater",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              SizedBox(width: 5),
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                height: 30,
+                                width: 70,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Color(0xffD99418),
+                                  border: Border.all(color: Colors.black),
+                                ),
+                                child: Text(
+                                  "8 Seater",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          // =====view in AR===
                           SizedBox(height: 20),
-
                           Row(
                             children: [
                               Expanded(
@@ -368,7 +419,6 @@ class _ThirdpageState extends State<Thirdpage> {
                                           ),
                                           duration: Duration(seconds: 1),
                                         ),
-                                      
                                       );
                                     },
                                     style: OutlinedButton.styleFrom(
@@ -392,27 +442,26 @@ class _ThirdpageState extends State<Thirdpage> {
                                   ),
                                 ),
                               ),
-
+                              SizedBox(width: 7),
                               // add to cart
                               Expanded(
                                 child: Container(
                                   height: 50,
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
-                                    color:Color(0xffD99418),
+                                    color: Color(0xffD99418),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                     style: ElevatedButton.styleFrom(
+                                    style: ElevatedButton.styleFrom(
                                       side: BorderSide.none,
-                                      backgroundColor: Color(0xffD99418)
+                                      backgroundColor: Color(0xffD99418),
                                     ),
                                     child: Text(
                                       "Add to Cart",
                                       style: TextStyle(color: Colors.black),
                                     ),
-                                    
                                   ),
                                 ),
                               ),
