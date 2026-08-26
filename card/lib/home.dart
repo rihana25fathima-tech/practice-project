@@ -101,10 +101,44 @@ class Homepage extends StatelessWidget {
                 ),
               ),
 
-              // 
+              // 3 containers
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+              Container(
+                    height: 90,
+                    padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+                    child:Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: 
+                    Icon(Icons.block),
+                        ),
+                     
+                      Center(child: 
+                      Text(
+                      "Block",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
+                    ),
+                     ),
+                      ],
+                    ),
+                  ),
+              
             ],
           ),
+            ],
         ),
+      ),
       ),
     );
   }
