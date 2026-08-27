@@ -45,6 +45,54 @@ class HomeScreen extends StatelessWidget {
         "price": "900",
         "rating": "2.3",
       },
+      // extra
+
+       {
+        "image": "assets/images/formal.jpg",
+        "name": "Forma shirt",
+        "price": "400",
+        "rating": "5.3",
+      },
+
+  {
+        "image": "assets/images/maxi.jpg",
+        "name": "Maxxi dresses",
+        "price": "599",
+        "rating": "2.3",
+      },
+        {
+        "image": "assets/images/mouse.jpg",
+        "name": "Mouse",
+        "price": "900",
+        "rating": "2.3",
+      },
+        {
+        "image": "assets/images/gown.jpg",
+        "name": "gown" ,
+        "price": "900",
+        "rating": "2.3",
+      },
+        {
+        "image": "assets/images/top2.jpg",
+        "name": "full sleev top",
+        "price": "1200",
+        "rating": "2.3",
+      },
+        {
+        "image": "assets/images/ethnic.jpg",
+        "name": "ethnic weare",
+        "price": "1500",
+        "rating": "1.3",
+      },
+        {
+        "image": "assets/images/top.jpg",
+        "name": "Top",
+        "price": "600",
+        "rating": "4.3",
+      },
+
+
+
     ];
 
     List<Map<String, dynamic>> Categories = [
@@ -253,7 +301,7 @@ class HomeScreen extends StatelessWidget {
               ),
 
               // product card
-              SizedBox(height: screenWidth * 0.01),
+              SizedBox(height: screenWidth * 0.001),
 
               GridView.builder(
                 shrinkWrap: true,

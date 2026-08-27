@@ -14,14 +14,18 @@ class _LoginPageState extends State<LoginPage> {
 
 TextEditingController usernameController =TextEditingController();
 TextEditingController passwordController =TextEditingController();
-TextEditingController numberController = TextEditingController();
+
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+  
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    
-    
-    
-    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.white,
@@ -85,18 +89,7 @@ TextEditingController numberController = TextEditingController();
                     )
                   )
                 ),
-                SizedBox(height: 20,),
-                TextField(
-                  controller: numberController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: "Your phone number",
-                    labelText: "Mobile number",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                ),
+                
                
                SizedBox(height: 25,),
                SizedBox(
