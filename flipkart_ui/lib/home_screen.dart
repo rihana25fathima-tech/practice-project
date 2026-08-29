@@ -45,54 +45,51 @@ class HomeScreen extends StatelessWidget {
         "price": "900",
         "rating": "2.3",
       },
-      // extra
 
-       {
+      // extra
+      {
         "image": "assets/images/formal.jpg",
         "name": "Forma shirt",
         "price": "400",
         "rating": "5.3",
       },
 
-  {
+      {
         "image": "assets/images/maxi.jpg",
         "name": "Maxxi dresses",
         "price": "599",
         "rating": "2.3",
       },
-        {
+      {
         "image": "assets/images/mouse.jpg",
         "name": "Mouse",
         "price": "900",
         "rating": "2.3",
       },
-        {
+      {
         "image": "assets/images/gown.jpg",
-        "name": "gown" ,
+        "name": "gown",
         "price": "900",
         "rating": "2.3",
       },
-        {
+      {
         "image": "assets/images/top2.jpg",
         "name": "full sleev top",
         "price": "1200",
         "rating": "2.3",
       },
-        {
+      {
         "image": "assets/images/ethnic.jpg",
         "name": "ethnic weare",
         "price": "1500",
         "rating": "1.3",
       },
-        {
+      {
         "image": "assets/images/top.jpg",
         "name": "Top",
         "price": "600",
         "rating": "4.3",
       },
-
-
-
     ];
 
     List<Map<String, dynamic>> Categories = [
@@ -110,40 +107,41 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
 
         title: Row(
-      
           mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                "Flipkart",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: screenWidth * 0.065,
-                ),
+          children: [
+            Text(
+              "Flipkart",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: screenWidth * 0.065,
               ),
+            ),
 
-              SizedBox(width: 4),
+            SizedBox(width: 4),
 
-              Image.asset("assets/images/flip.jpg", 
+            Image.asset(
+              "assets/images/flip.jpg",
               // width: 35, height: 35
-              width: screenWidth *0.08,
-              height: screenWidth *0.08,
-              ),
-            ],
-          ),
-        
+              width: screenWidth * 0.08,
+              height: screenWidth * 0.08,
+            ),
+          ],
+        ),
+
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications,size: screenWidth * 0.06,),),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications, size: screenWidth * 0.06),
+          ),
 
           IconButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CartPage(),
-                ),
+                MaterialPageRoute(builder: (context) => CartPage()),
               );
             },
-            icon: Icon(Icons.shopping_cart,size: screenWidth * 0.06,
-            ),
+            icon: Icon(Icons.shopping_cart, size: screenWidth * 0.06),
           ),
         ],
       ),
@@ -154,7 +152,9 @@ class HomeScreen extends StatelessWidget {
             DrawerHeader(
               child: Text(
                 AppStrings.appName,
-                style: TextStyle(fontSize: screenWidth * 0.065, fontWeight: FontWeight.bold
+                style: TextStyle(
+                  fontSize: screenWidth * 0.065,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -162,7 +162,7 @@ class HomeScreen extends StatelessWidget {
               leading: Icon(Icons.home),
               title: Text("Home"),
               onTap: () {
-                Navigator.pop(context );
+                Navigator.pop(context);
               },
             ),
             ListTile(
@@ -171,7 +171,7 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CartPage(),),
+                  MaterialPageRoute(builder: (context) => CartPage()),
                 );
               },
             ),
@@ -181,7 +181,7 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => OrderPage(),),
+                  MaterialPageRoute(builder: (context) => OrderPage()),
                 );
               },
             ),
@@ -200,7 +200,7 @@ class HomeScreen extends StatelessWidget {
       ),
 
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03,),
+        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
 
         child: SingleChildScrollView(
           child: Column(
@@ -215,28 +215,28 @@ class HomeScreen extends StatelessWidget {
                   border: Border.all(
                     color: const Color.fromARGB(255, 30, 6, 14),
                   ),
-                  borderRadius: BorderRadius.circular(screenWidth * 0.03,),
+                  borderRadius: BorderRadius.circular(screenWidth * 0.03),
                 ),
 
                 child: Row(
                   children: [
                     SizedBox(width: screenWidth * 0.035),
-                    Icon(Icons.search, size: screenWidth * 0.065,color: Colors.grey.shade700,
+                    Icon(
+                      Icons.search,
+                      size: screenWidth * 0.065,
+                      color: Colors.grey.shade700,
                     ),
-                
 
                     Expanded(
                       child: TextField(
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.038,
-                        ),
+                        style: TextStyle(fontSize: screenWidth * 0.038),
 
                         decoration: InputDecoration(
                           hintText: AppStrings.searchHint,
-                          hintStyle:TextStyle(
+                          hintStyle: TextStyle(
                             fontSize: screenWidth * 0.038,
                             color: Colors.grey,
-                          ) ,
+                          ),
                           border: InputBorder.none,
                         ),
                       ),
@@ -255,14 +255,13 @@ class HomeScreen extends StatelessWidget {
 
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: EdgeInsets.symmetric(horizontal: screenWidth * 0.01,
+                      margin: EdgeInsets.symmetric(
+                        horizontal: screenWidth * 0.01,
                       ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(screenWidth * 0.03,
-                        ),
+                        borderRadius: BorderRadius.circular(screenWidth * 0.03),
                         image: DecorationImage(
-                          image: AssetImage(banners[index],
-                          ),
+                          image: AssetImage(banners[index]),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -273,46 +272,40 @@ class HomeScreen extends StatelessWidget {
 
               //catagries
               SizedBox(height: screenWidth * 0.03),
-
               SizedBox(
                 height: screenWidth * 0.25,
-
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.01,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
                   itemCount: Categories.length,
                   itemBuilder: (context, index) {
                     final item = Categories[index];
 
                     return Padding(
-                      padding: EdgeInsets.only(right: screenWidth * 0.02,
-                      ),
-                      child:SizedBox(width: screenWidth * 0.20,
-                      child: Catagory(
-                        icon: item["icon"],
-                        titile: item["title"],
-                      ),
+                      padding: EdgeInsets.only(right: screenWidth * 0.02),
+                      child: SizedBox(
+                        width: screenWidth * 0.20,
+                        child: Catagory(
+                          icon: item["icon"],
+                          titile: item["title"],
+                        ),
                       ),
                     );
                   },
                 ),
               ),
-
               // product card
-              SizedBox(height: screenWidth * 0.001),
-
+              SizedBox(height: screenWidth * 0.0001),
               GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: products.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: screenWidth > 900 
-                  ?4
-                  : screenWidth > 600
-                  ?3
-                  :2,
+                  crossAxisCount: screenWidth > 900
+                      ? 4
+                      : screenWidth > 600
+                      ? 3
+                      : 2,
                   crossAxisSpacing: screenWidth * 0.02,
                   mainAxisSpacing: screenWidth * 0.02,
                   childAspectRatio: 0.78,
@@ -327,7 +320,7 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: screenWidth * 0.04,),
+              SizedBox(height: screenWidth * 0.04),
             ],
           ),
         ),

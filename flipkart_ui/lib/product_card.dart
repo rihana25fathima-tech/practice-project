@@ -21,26 +21,25 @@ class ProductCard extends StatelessWidget {
     return Card(
       elevation: 3,
       margin: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
 
       child: Padding(
         padding: EdgeInsets.all(screenWidth * 0.025),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child:  Image.asset(
-              image,
-              // height: screenWidth * 0.28,
-              width: double.infinity,
-              fit: BoxFit.contain,
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  image,
+                  // height: screenWidth * 0.28,
+                  width: double.infinity,
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
-            ),
-            ),
-            SizedBox(height: screenWidth * 0.015,),
+            SizedBox(height: screenWidth * 0.015),
 
             Text(
               name,
@@ -61,19 +60,21 @@ class ProductCard extends StatelessWidget {
                 fontSize: screenWidth * 0.037,
               ),
             ),
-SizedBox(height: screenWidth * 0.008,),
+            SizedBox(height: screenWidth * 0.008),
 
             Row(
               children: [
-                Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: screenWidth * 0.04,
-                ),
+                Icon(Icons.star, color: Colors.amber, size: screenWidth * 0.04),
 
                 SizedBox(width: screenWidth * 0.01),
 
-                Text(rating, style: TextStyle(fontWeight: FontWeight.bold,fontSize: 0.033)),
+                Text(
+                  rating,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 0.033,
+                  ),
+                ),
               ],
             ),
           ],

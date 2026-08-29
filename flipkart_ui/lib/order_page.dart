@@ -8,7 +8,6 @@ class OrderPage extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     final imageSize = screenWidth < 400 ? 65.0 : 80.0;
-    final horizontalPadding = screenWidth < 400 ? 8.0 : 12.0;
 
     return Scaffold(
       appBar: AppBar(title: Text("Orders"), centerTitle: true),
