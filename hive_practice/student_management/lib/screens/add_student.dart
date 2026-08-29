@@ -1,31 +1,43 @@
 import 'package:flutter/material.dart';
 
-class StudentPage extends StatefulWidget {
-  const StudentPage({super.key});
+class AddStudent extends StatefulWidget {
+  const AddStudent({super.key});
 
   @override
-  State<StudentPage> createState() => _StudentPageState();
+  State<AddStudent> createState() => _StudentPageState();
 }
 
-class _StudentPageState extends State<StudentPage> {
+class _StudentPageState extends State<AddStudent> {
   final TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   TextEditingController courseController = TextEditingController();
-  TextEditingController numberController = TextEditingController();
+
+  // @override
+  // void dispose() {
+  //   nameController.dispose();
+  //   ageController.dispose();
+  //   courseController.dispose();
+  //   numberController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  Center(child: 
-      Padding(padding:EdgeInsets.all(20),
-           child:   Column(
-            mainAxisSize: MainAxisSize.min,
+      appBar: AppBar(title: const Text("Add Student"), centerTitle: true),
+
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
           children: [
+            SizedBox(height: 30),
+
             TextField(
               controller: nameController,
               decoration: InputDecoration(
                 hintText: "Student Name",
                 border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.person),
               ),
             ),
 
@@ -36,6 +48,7 @@ class _StudentPageState extends State<StudentPage> {
               decoration: InputDecoration(
                 hintText: "Age",
                 border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.calendar_today),
               ),
             ),
             SizedBox(height: 20),
@@ -44,18 +57,11 @@ class _StudentPageState extends State<StudentPage> {
               decoration: InputDecoration(
                 hintText: "Course",
                 border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: numberController,
-              decoration: InputDecoration(
-                hintText: "Phone Number",
-                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.school),
               ),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 30),
             SizedBox(
               height: 50,
               width: double.infinity,
@@ -64,14 +70,12 @@ class _StudentPageState extends State<StudentPage> {
                   print(nameController.text);
                   print(ageController.text);
                   print(courseController.text);
-                  print(numberController.text);
                 },
-                child: Text("Save Student",style: TextStyle(fontSize: 18),),
+                child: Text("Save Student", style: TextStyle(fontSize: 18)),
               ),
             ),
           ],
         ),
-      ),
       ),
     );
   }

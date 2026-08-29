@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:student_management/home.dart';
+import 'package:student_management/screens/student_list.dart';
 
-void main(){
+void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive
   runApp(StudentApp());
 }
 
@@ -12,7 +14,7 @@ class StudentApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Homepage(),
+      home: StudentList(),
       title: "Student App",
     );
   }
