@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_management/screens/add_student.dart';
 
+
 class StudentList extends StatelessWidget {
   const StudentList({super.key});
 

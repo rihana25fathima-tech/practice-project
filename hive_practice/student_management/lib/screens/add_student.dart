@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:student_management/models/student_model.dart';
+import 'package:student_management/services/student_service.dart';
 
 class AddStudent extends StatefulWidget {
-  const AddStudent({super.key});
+  final StudentModel? student;
+  final int? index;
+
+  const AddStudent({super.key, this.student, this.index});
 
   @override
   State<AddStudent> createState() => _StudentPageState();
@@ -9,22 +14,66 @@ class AddStudent extends StatefulWidget {
 
 class _StudentPageState extends State<AddStudent> {
   final TextEditingController nameController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
-  TextEditingController courseController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
+  final TextEditingController courseController = TextEditingController();
 
-  // @override
-  // void dispose() {
-  //   nameController.dispose();
-  //   ageController.dispose();
-  //   courseController.dispose();
-  //   numberController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    // Edit mode ആണെങ്കിൽ പഴയ data കാണിക്കും
+    if (widget.student != null) {
+      nameController.text = widget.student!.name;
+      ageController.text = widget.student!.age;
+      courseController.text = widget.student!.course;
+    }
+  }
+
+  Future<void> saveStudent() async {
+    final name = nameController.text.trim();
+    final age = ageController.text.trim();
+    final course = courseController.text.trim();
+    // validation
+    if (name.isEmpty || age.isEmpty || course.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Please fill all fields")));
+      return;
+    }
+    //student data
+    final student = StudentModel(name: name, age: age, course: course);
+    //singleton service
+    final service = StudentService.instance;
+    //update
+    if (widget.index != null) {
+      await service.addStudent(student);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Student updated successfully")),
+        );
+      }
+    } else {
+      await service.addStudent(student);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Student added successfully")),
+        );
+      }
+    }
+    if (mounted) {}
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    ageController.dispose();
+    courseController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Add Student"), centerTitle: true),
+      appBar: AppBar(title: Text("Add student"), centerTitle: true),
 
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -66,12 +115,8 @@ class _StudentPageState extends State<AddStudent> {
               height: 50,
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  print(nameController.text);
-                  print(ageController.text);
-                  print(courseController.text);
-                },
-                child: Text("Save Student", style: TextStyle(fontSize: 18)),
+                onPressed: saveStudent,
+                child: Text("save student", style: TextStyle(fontSize: 18)),
               ),
             ),
           ],
