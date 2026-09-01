@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:student_management/models/student_model.dart';
 import 'package:student_management/screens/add_student.dart';
 import 'package:student_management/screens/student_detail.dart';
 
@@ -23,7 +24,7 @@ class _StudentRecordState extends State<StudentRecord> {
 
   @override
   Widget build(BuildContext context) {
-    final studentBox = Hive.box("studentBox");
+    final studentBox = Hive.box<StudentModel>("studentBox");
     return Scaffold(
       appBar: AppBar(title: const Text("Student Records"), centerTitle: true),
 
@@ -67,25 +68,36 @@ class _StudentRecordState extends State<StudentRecord> {
               valueListenable: studentBox.listenable(),
               builder: (context, box, child) {
                 //FILTER
-                final students = <Map<String, dynamic>>[];
+                final students = <StudentModel>[];
+                final originalIndexes = <int>[];
 
                 for (int i = 0; i < box.length; i++) {
-                  final student = Map<String, dynamic>.from(box.getAt(i));
+                  final student = box.getAt(i);
+                  if (student != null) {
+                    final name = student.name.toLowerCase();
 
-                  final name = student['name'].toString().toLowerCase();
-
-                  if (name.contains(searchText)) {
-                    students.add({...student, 'originalIndex': i});
+                    if (name.contains(searchText)) {
+                      students.add(student);
+                      originalIndexes.add(i);
+                    }
                   }
                 }
                 //empty check
                 if (box.isEmpty) {
                   return Center(
                     child: Text(
-                      searchText.isEmpty
-                          ? "No Students Added"
-                          : "No Students Added",
+                      "No Students Added",
                       style: const TextStyle(fontSize: 18),
+                    ),
+                  );
+                }
+
+                //result illangil
+                if (students.isEmpty) {
+                  return const Center(
+                    child: Text(
+                      "No Students Found",
+                      style: TextStyle(fontSize: 18),
                     ),
                   );
                 }
@@ -102,14 +114,16 @@ class _StudentRecordState extends State<StudentRecord> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  StudentDetail(student: student, index: index),
+                              builder: (context) => StudentDetail(
+                                student: student,
+                                index: originalIndexes[index],
+                              ),
                             ),
                           );
                         },
                         leading: CircleAvatar(child: Icon(Icons.person)),
                         title: Text(
-                          student['name'],
+                          student.name,
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -117,8 +131,8 @@ class _StudentRecordState extends State<StudentRecord> {
                         ),
 
                         subtitle: Text(
-                          "Age: ${student['age']}\n"
-                          "Course: ${student['course']}",
+                          "Age: ${student.age}\n"
+                          "Course: ${student.course}",
                         ),
 
                         trailing: const Icon(Icons.arrow_forward_ios, size: 18),
@@ -129,6 +143,23 @@ class _StudentRecordState extends State<StudentRecord> {
               },
             ),
           ),
+          StreamBuilder(
+  stream: studentBox.watch(),
+  builder: (context, snapshot) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      child: Text(
+        "Total Students: ${studentBox.length}",
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  },
+),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:student_management/models/student_model.dart';
+import 'package:student_management/screens/student_record.dart';
 import 'package:student_management/services/student_service.dart';
 
 class AddStudent extends StatefulWidget {
@@ -45,18 +46,23 @@ class _StudentPageState extends State<AddStudent> {
     final service = StudentService.instance;
     //update
     if (widget.index != null) {
-      await service.addStudent(student);
+      await service.updateStudent(widget.index!, student);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Student updated successfully")),
+          const SnackBar(content: Text("Student updated successfully")
+          ),
         );
-      }
+       Navigator.pop(context);
+
+       Navigator.pop(context);
+    }
     } else {
       await service.addStudent(student);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Student added successfully")),
         );
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => StudentRecord()));
       }
     }
     if (mounted) {}
