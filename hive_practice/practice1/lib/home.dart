@@ -30,7 +30,7 @@ class _HomepageState extends State<Homepage> {
   }
   //delete
   Future<void>deletedata(int index)async{
-  final prefs = await SharedPreferences.getInstance();
+  await SharedPreferences.getInstance();
   setState(() {
     savedname.removeAt(index);
     savedage.removeAt(index);
@@ -38,6 +38,14 @@ class _HomepageState extends State<Homepage> {
   await savedata();
   }
 
+Future<void>cleardata()async{
+await SharedPreferences.getInstance();
+setState(() {
+  savedname.clear();
+  savedage.clear();
+});
+await savedata();
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,6 +99,10 @@ class _HomepageState extends State<Homepage> {
                 itemCount: savedname.length,
               ),
             ),
+            ElevatedButton(onPressed: () {
+              cleardata();
+            }, child: Text("clear all"),
+            )
           ],
         ),
       ),
