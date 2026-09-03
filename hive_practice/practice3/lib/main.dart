@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:practice3/home.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
-void main()async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  await Hive.openBox('openBox');
-  runApp(Hivepra());
+
+void main(){
+  runApp(Practice());
 }
-class Hivepra extends StatelessWidget {
-  const Hivepra({super.key});
+class Practice extends StatelessWidget {
+  const Practice({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "hiveractice",
+      title: "practice",
       home: Homepage(),
     );
   }

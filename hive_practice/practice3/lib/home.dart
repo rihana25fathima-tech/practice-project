@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
@@ -9,57 +8,62 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
-   final box = Hive.box('openBox');
+  TextEditingController nameController =TextEditingController() ;
+  // TextEditingController  ageController =TextEditingController();
+  List<String>name = [];
+  Future<void>saveddata()async{
+  final pref = await SharedPreferences.getInstance();
+  pref.setStringList("name", name);
+  nameController.clear();
+  }
+  Future<void>getdata()async{
+  final pref = await SharedPreferences.getInstance();
+ final save = pref.getStringList("name");
+ setState(() {
+   name = save ?? [];
+ });
+  }
   @override
   Widget build(BuildContext context) {
-    final names = box.values.toList();
     return Scaffold(
-      body: Padding(padding: EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextField(
-            controller: nameController,
-            decoration: InputDecoration(
-              hintText: "enter name",
-              border: OutlineInputBorder(),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(
+                labelText: "Enter Name",
+                border: OutlineInputBorder(),
+              ),
             ),
-          ),
-          SizedBox(height: 10,),
-           TextField(
-            controller: ageController,
-            decoration: InputDecoration(
-              hintText: "enter age",
-              border: OutlineInputBorder(),
+            //  TextField(
+            //   controller: ageController,
+            //   decoration: InputDecoration(
+            //     labelText: "Enter age",
+            //     border: OutlineInputBorder(),
+            //   ),
+            // ),
+
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+             saveddata();
+             setState(() {
+               name.add(nameController.text);
+             });
+              },
+              child: const Text("Submit"),
             ),
-          ),
-          SizedBox(height: 20,),
-          ElevatedButton(onPressed: () {
-          box.add([
-            nameController.text, 
-            ageController.text,
-          ]);
-          
-          nameController.clear();
-          ageController.clear();
-          setState(() { });
-          }, 
-          child: Text("Save")),
-          Expanded(child: ListView.builder(itemBuilder: (context, index) {
-            final student =names[index];
-
-            return ListTile(
-              title: Text(student[0]),
-              subtitle: Text(student[1]),
-            );
-          },
-          itemCount: names.length,))
-
-          
-        ],
-      ),
+            Expanded(child: ListView.builder(itemBuilder: (context, index) { return
+              ListTile(
+            title: Text(name[index]),
+              );
+            },
+            itemCount: name.length,))
+          ],
+        ),
       ),
     );
   }
