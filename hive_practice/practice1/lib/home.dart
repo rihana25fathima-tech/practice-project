@@ -10,47 +10,89 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   TextEditingController nameController = TextEditingController();
-  String savedName = "";
-  @override
-  void initstate(){
-    super.initState();
-    getName();
+  TextEditingController ageController = TextEditingController();
+  List<String> savedname = [];
+  List<String> savedage = [];
+  //save
+  Future<void> savedata() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setStringList("name", savedname);
+    prefs.setStringList("age", savedage);
   }
-  //saved
-   Future<void>savedName()async{
-   final prefs = await SharedPreferences.getInstance();
-   //save cheyyan
-   await prefs.setString(
-    "name",
-    nameController.text,
-    );
-   }
-  // name edkkan
-  Future<void>getName()async {
-   final prefs = await SharedPreferences.getInstance();
-   savedName = prefs.getString("name")??"";
+
+  //read
+  Future<void> getdata() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      savedname = prefs.getStringList("name") ?? [];
+      savedage = prefs.getStringList("age") ?? [];
+    });
+  }
+  //delete
+  Future<void>deletedata(int index)async{
+  final prefs = await SharedPreferences.getInstance();
+  setState(() {
+    savedname.removeAt(index);
+    savedage.removeAt(index);
+  });
+  await savedata();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(padding: EdgeInsets.all(20),
-      child: Column(
-        children: [
-          TextField(
-            controller: nameController,
-            decoration: InputDecoration(
-              hintText: "enter name",
-              border: OutlineInputBorder(),
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(
+                hintText: "enter name",
+                border: OutlineInputBorder(),
+              ),
             ),
-          ),
-          SizedBox(height: 20,),
-          ElevatedButton(onPressed: () {
-            savedName;
-          },
-          child: Text("Save"))
-        ],
-      ),
+            SizedBox(height: 10),
+            TextField(
+              controller: ageController,
+              decoration: InputDecoration(
+                hintText: "enter age",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () async {
+                setState(() {
+                  savedname.add(nameController.text);
+                  savedage.add(ageController.text);
+                });
+                await savedata();
+                nameController.clear();
+                ageController.clear();
+              },
+              child: Text("Save"),
+            ),
+            SizedBox(height: 10),
+            Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(savedname[index]),
+                    subtitle: Text(savedage[index]),
+                    trailing: IconButton(
+                      onPressed: () {
+                        deletedata(index);
+                      },
+                      icon: Icon(Icons.delete),
+                    ),
+                  );
+                },
+                itemCount: savedname.length,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
