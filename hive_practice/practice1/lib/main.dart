@@ -10,7 +10,7 @@ class Practice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "practice",
+      title:"ppp",
       home: Homepage(),
     );
   }

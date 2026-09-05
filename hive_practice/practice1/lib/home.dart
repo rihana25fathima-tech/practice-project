@@ -9,43 +9,60 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
-  List<String> savedname = [];
-  List<String> savedage = [];
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController passcontroller = TextEditingController();
+  List<String> name = [];
+  List<String> pass = [];
   //save
-  Future<void> savedata() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setStringList("name", savedname);
-    prefs.setStringList("age", savedage);
+  Future<void> savename() async {
+    final pref = await SharedPreferences.getInstance();
+    pref.setStringList("name", name);
+    namecontroller.clear();
   }
 
-  //read
-  Future<void> getdata() async {
-    final prefs = await SharedPreferences.getInstance();
+  Future<void> savepass() async {
+    final pref = await SharedPreferences.getInstance();
+    pref.setStringList("pass", pass);
+    passcontroller.clear();
+  }
+
+  //get
+  Future<void> get() async {
+    final pref = await SharedPreferences.getInstance();
+    final saveddname = pref.getStringList("name");
     setState(() {
-      savedname = prefs.getStringList("name") ?? [];
-      savedage = prefs.getStringList("age") ?? [];
+      name = saveddname ?? [];
     });
   }
-  //delete
-  Future<void>deletedata(int index)async{
-  await SharedPreferences.getInstance();
-  setState(() {
-    savedname.removeAt(index);
-    savedage.removeAt(index);
-  });
-  await savedata();
+
+  Future<void> getpass() async {
+    final pref = await SharedPreferences.getInstance();
+    final saveddpass = pref.getStringList("pass");
+    setState(() {
+      pass = saveddpass ?? [];
+    });
   }
 
-Future<void>cleardata()async{
-await SharedPreferences.getInstance();
+  //delete
+  Future<void> deletedata(int index) async {
+    final pref = await SharedPreferences.getInstance();
 setState(() {
-  savedname.clear();
-  savedage.clear();
+  name.removeAt(index);
+  pass.removeAt(index);
 });
-await savedata();
-}
+await pref.setStringList("name", name);
+await pref.setStringList("pass", pass);
+    
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    get();
+    getpass();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,55 +71,46 @@ await savedata();
         child: Column(
           children: [
             TextField(
-              controller: nameController,
+              controller: namecontroller,
               decoration: InputDecoration(
                 hintText: "enter name",
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 10),
             TextField(
-              controller: ageController,
+              controller: passcontroller,
               decoration: InputDecoration(
-                hintText: "enter age",
+                hintText: "enter password",
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () async {
+              onPressed: () {
                 setState(() {
-                  savedname.add(nameController.text);
-                  savedage.add(ageController.text);
+                  name.add(namecontroller.text);
+                  pass.add(passcontroller.text);
                 });
-                await savedata();
-                nameController.clear();
-                ageController.clear();
+                savename();
+                savepass();
               },
               child: Text("Save"),
             ),
-            SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(savedname[index]),
-                    subtitle: Text(savedage[index]),
-                    trailing: IconButton(
-                      onPressed: () {
-                        deletedata(index);
-                      },
-                      icon: Icon(Icons.delete),
-                    ),
+                    title: Text(name[index]),
+                    subtitle: Text(pass[index]),
+                    trailing: IconButton(onPressed: () {
+                      deletedata(index);
+                    }, icon: Icon(Icons.delete)),
+                    
                   );
                 },
-                itemCount: savedname.length,
+                itemCount: name.length,
               ),
             ),
-            ElevatedButton(onPressed: () {
-              cleardata();
-            }, child: Text("clear all"),
-            )
           ],
         ),
       ),
