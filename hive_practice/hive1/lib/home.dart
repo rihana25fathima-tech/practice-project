@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_flutter/adapters.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -9,56 +9,58 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  TextEditingController nameController =TextEditingController() ;
-  var box = Hive.box('openbox');
-  //save
-  void savedname(){
-    String name = nameController.text;
-    box.put("name", name);
-    nameController.clear();
-    setState(() {
-      
-    });
+  TextEditingController nameController = TextEditingController();
+ final box = Hive.box('openbox');
+ //save
+  void savedata(){
+  String name = nameController.text.trim();
+  if(name.isNotEmpty){
+   box.add(name);
+   nameController.clear();
+   setState(() {
+     
+   });
   }
-  //get
-  String getname(){
-    return  box.get("name") ?? "";
   }
+//get
+String getdata(int index){
+
+return  box.getAt(index).toString();
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home Page'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             TextField(
               controller: nameController,
-              decoration: InputDecoration(
-                labelText: "Enter Name",
+              decoration: const InputDecoration(
+                hintText: 'Enter your name',
                 border: OutlineInputBorder(),
               ),
             ),
-          
 
             const SizedBox(height: 20),
 
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  box.add(nameController.text);
-                });
-             savedname();
+            savedata();
               },
-              child: const Text("Submit"),
+              child: const Text('Save'),
             ),
-            // Expanded(child:  ListView.builder(itemBuilder: (context, index) {
-            //   return ListTile(
-            //     title: Text( ),
-            //   )
-            // },))
-            Text(
-              getname(),
-            )
+            SizedBox(height: 20,),
+            Expanded(child: ListView.builder(itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(
+                  getdata(index),
+                ),
+              );
+            },))
           ],
         ),
       ),
