@@ -144,22 +144,22 @@ class _StudentRecordState extends State<StudentRecord> {
             ),
           ),
           StreamBuilder(
-  stream: studentBox.watch(),
-  builder: (context, snapshot) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      child: Text(
-        "Total Students: ${studentBox.length}",
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  },
-),
+            stream: studentBox.watch(),
+            builder: (context, snapshot) {
+              return Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  "Total Students: ${studentBox.length}",
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

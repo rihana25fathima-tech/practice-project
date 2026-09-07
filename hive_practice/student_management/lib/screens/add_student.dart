@@ -21,12 +21,11 @@ class _StudentPageState extends State<AddStudent> {
   @override
   void initState() {
     super.initState();
-    // Edit mode ആണെങ്കിൽ പഴയ data കാണിക്കും
-    if (widget.student != null) {
-      nameController.text = widget.student!.name;
-      ageController.text = widget.student!.age;
-      courseController.text = widget.student!.course;
-    }
+    // if (widget.student != null) {
+    //   nameController.text = widget.student!.name;
+    //   ageController.text = widget.student!.age;
+    //   courseController.text = widget.student!.course;
+    // }
   }
 
   Future<void> saveStudent() async {
@@ -53,7 +52,6 @@ class _StudentPageState extends State<AddStudent> {
           ),
         );
        Navigator.pop(context);
-
        Navigator.pop(context);
     }
     } else {
