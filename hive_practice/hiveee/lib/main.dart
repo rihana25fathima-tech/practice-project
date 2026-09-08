@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hiveee/hom.dart';
+import 'package:hiveee/home.dart';
 
-void main()async{
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.openBox('opnbox');
   await Hive.initFlutter();
-  runApp(Myapp());
+  await Hive.openBox('openbox');
+  runApp(const MyApp());
 }
-class Myapp extends StatelessWidget {
-  const Myapp({super.key});
 
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    home: Homepage(),
+      title: 'Flutter Demo',
+     home: Homepage(),
+
     );
   }
 }
