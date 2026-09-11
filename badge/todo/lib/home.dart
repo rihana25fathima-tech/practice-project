@@ -62,19 +62,80 @@ class _HomepageState extends State<Homepage> {
                 ),
               ),
               SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  saved();
-                },
-                child: Text("Save"),
-              ),
             ],
           ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                saved();
+                Navigator.pop(context);
+              },
+              child: Text("Save"),
+            ),
+          ],
         );
       },
     );
   }
+  //update
+  void update (int index){
+String name = nameController.text.trim();
+String age = ageController.text.trim();
+setState(() {
+  box.putAt(index,{
+   "name" :name,
+   "age" : age,
+  });
+  nameController.clear();
+  ageController.clear();
+});
+Navigator.pop(context);
+  }
+//update show
+void showUpdate(int index) {
+  nameController.text = getname(index);
+  ageController.text = getage(index);
 
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text("Update details"),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(
+                hintText: "Enter your name",
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            SizedBox(height: 20),
+
+            TextField(
+              controller: ageController,
+              decoration: InputDecoration(
+                hintText: "Enter your age",
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            SizedBox(height: 10),
+
+            ElevatedButton(
+              onPressed: () {
+                update(index);
+              },
+              child: Text("Update"),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +145,10 @@ class _HomepageState extends State<Homepage> {
             title: Text(getname(index)),
             subtitle: Text(getage(index)),
 
-            trailing: IconButton(
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+             IconButton(
               onPressed: () {
                 setState(() {
                   delete(index);
@@ -92,6 +156,13 @@ class _HomepageState extends State<Homepage> {
               },
               icon: Icon(Icons.delete),
             ),
+            IconButton(onPressed: () {
+              // nameController.text = getname(index);
+              // ageController.text = getage(index);
+              showUpdate(index);
+            }, icon: Icon(Icons.update),),
+              ]
+            )
           );
         },
         itemCount: box.length,
