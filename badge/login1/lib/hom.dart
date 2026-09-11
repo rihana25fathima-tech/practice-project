@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:login1/details.dart';
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
@@ -10,6 +11,20 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   TextEditingController nameController =TextEditingController();
   TextEditingController ageController = TextEditingController();
+  final box = Hive.box("open");
+  //save
+  void saved(){
+    String name = nameController.text.trim();
+    String age = ageController.text.trim();
+    setState(() {
+      box.add({
+      "name" : name,
+      "age" :age,
+      });
+      nameController.clear();
+      ageController.clear();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +52,8 @@ TextField(
 ),
 SizedBox(height: 20,),
 ElevatedButton(onPressed: () {
-
+ saved();
+ Navigator.push(context, MaterialPageRoute(builder: (context) => Details(),));
 }, child: Text("save"),)
       ]
       ),
