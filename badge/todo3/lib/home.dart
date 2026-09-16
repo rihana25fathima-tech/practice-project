@@ -9,79 +9,96 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  TextEditingController namecontroller =TextEditingController();
-  TextEditingController agecontroller =TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController agecontroller = TextEditingController();
   final box = Hive.box("openboxx");
   //save
-  void savedata(){
+  void savedata() {
     final name = namecontroller.text.trim();
     final age = agecontroller.text.trim();
-    box.add({
-      "name" : name,
-      "age" :age,
-    });
+    box.add({"name": name, "age": age});
     namecontroller.clear();
     agecontroller.clear();
     setState(() {});
   }
-//get
-String getname(int index){
-  return box.getAt(index)["name"];
-}
-String getage(int index){
-  return box.getAt(index)["age"];
-}
+
+  //get
+  String getname(int index) {
+    return box.getAt(index)["name"];
+  }
+
+  String getage(int index) {
+    return box.getAt(index)["age"];
+  }
+  //delete
+  void deletedata(int index){
+    box.deleteAt(index);
+    setState(() {
+      
+    });
+  }
+
   //popup
-  void show(){
-    showDialog(context: context, builder: (context) {
-      return AlertDialog(
-    title: Text("Add your Details"),
-    content: Column(
-      children: [
-        TextField(
-          controller: namecontroller,
-          decoration: InputDecoration(
-            hintText: "Enter name",
-            border: OutlineInputBorder(),
+  void show() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Add your Details"),
+          content: Column(
+            children: [
+              TextField(
+                controller: namecontroller,
+                decoration: InputDecoration(
+                  hintText: "Enter name",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 16),
+              TextField(
+                controller: agecontroller,
+                decoration: InputDecoration(
+                  hintText: "Enter age",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  savedata();
+                  Navigator.pop(context);
+                }, child :Text("save") ,
+              ),
+
+            ],
           ),
-        ),
-        SizedBox(height: 16,),
-         TextField(
-          controller: agecontroller,
-          decoration: InputDecoration(
-            hintText: "Enter age",
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 10,),
-        ElevatedButton(onPressed: () {
-          savedata();
-          Navigator.pop(context);
-        }, child: Text("Save"),
-        
-        )
-      ],
-    ),
-    );
-    }
+        );
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:ListView.builder(itemBuilder: (context, index) {
-   
-      return ListTile(
-        title: Text(getname(index)),
-        subtitle: Text(getage(index)),
-      );
-      },itemCount: box.length,
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(getname(index)),
+            subtitle: Text(getage(index)),
+            trailing: IconButton(onPressed: () {
+              deletedata( index);
+            }, icon: Icon(Icons.delete)),
+          );
+        },
+        itemCount: box.length,
       ),
 
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        show();
-      },child: Icon(Icons.add),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          show();
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
