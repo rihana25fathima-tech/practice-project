@@ -23,35 +23,59 @@
 //   b.bike();
 // }
 //==========polymorphism=========
-class Payments{
-  void pay(){
-    print("payments");
+// class Payments{
+//   void pay(){
+//     print("payments");
+//   }
+// }
+// class UPLPayments extends Payments{
+//   @override
+//   void pay(){
+//     print(" UPi payment");
+//   }
+// }
+// class CardPayments extends Payments{
+//   @override
+//   void pay(){
+//     print(" card payment");
+//   }
+// }
+// class CashPayments extends Payments{
+//   @override
+//   void pay(){
+//     print("cash payment");
+//   }
+// }
+// void main(){
+//   Payments p1 =UPLPayments();
+//   Payments p2 =CardPayments();
+//   Payments p3 =CashPayments();
+
+//   p1.pay();
+//   p2.pay();
+//   p3.pay();
+// }
+// ==================Abstraction==============
+abstract class Employee {
+  void calcilateSalary(){
+    print("calculate embloyye salary");
+  }
+} 
+class Fulltimesalary extends Employee{
+  void Fulltimesalaryy(){
+    print("claculate fulltime salary");
   }
 }
-class UPLPayments extends Payments{
-  @override
-  void pay(){
-    print(" UPi payment");
-  }
-}
-class CardPayments extends Payments{
-  @override
-  void pay(){
-    print(" card payment");
-  }
-}
-class CashPayments extends Payments{
-  @override
-  void pay(){
-    print("cash payment");
+class partimesalary extends Employee{
+  void partimesalaryy(){
+    print("claculate fulltime salary");
   }
 }
 void main(){
-  Payments p1 =UPLPayments();
-  Payments p2 =CardPayments();
-  Payments p3 =CashPayments();
-
-  p1.pay();
-  p2.pay();
-  p3.pay();
+  Fulltimesalary f =Fulltimesalary();
+  partimesalary p =partimesalary();
+  f.calcilateSalary();
+  f.Fulltimesalaryy();
+  p.calcilateSalary();
+  p.partimesalaryy();
 }
