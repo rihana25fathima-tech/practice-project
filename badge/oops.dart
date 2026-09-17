@@ -56,26 +56,58 @@
 //   p3.pay();
 // }
 // ==================Abstraction==============
-abstract class Employee {
-  void calcilateSalary(){
-    print("calculate embloyye salary");
+// abstract class Employee {
+//   void calcilateSalary(){
+//     print("calculate embloyye salary");
+//   }
+// } 
+// class Fulltimesalary extends Employee{
+//   void Fulltimesalaryy(){
+//     print("claculate fulltime salary");
+//   }
+// }
+// class partimesalary extends Employee{
+//   void partimesalaryy(){
+//     print("claculate fulltime salary");
+//   }
+// }
+// void main(){
+//   Fulltimesalary f =Fulltimesalary();
+//   partimesalary p =partimesalary();
+//   f.calcilateSalary();
+//   f.Fulltimesalaryy();
+//   p.calcilateSalary();
+//   p.partimesalaryy();
+// }
+//================Encapsulation==============
+class User{
+  String _password;
+  String _username;
+
+  User(this._password,this._username);
+
+  //set
+  void setPass(String passs){
+    _password = passs;
   }
-} 
-class Fulltimesalary extends Employee{
-  void Fulltimesalaryy(){
-    print("claculate fulltime salary");
+  //
+  void setuser(String user){
+    _username =user;
   }
-}
-class partimesalary extends Employee{
-  void partimesalaryy(){
-    print("claculate fulltime salary");
+  //get
+  String getpass(){
+    return _password;
+  }
+  //
+  String getuser(){
+    return _username;
   }
 }
 void main(){
-  Fulltimesalary f =Fulltimesalary();
-  partimesalary p =partimesalary();
-  f.calcilateSalary();
-  f.Fulltimesalaryy();
-  p.calcilateSalary();
-  p.partimesalaryy();
+  User u =User("1234", "Rihnaa");
+  u._password;
+  u._username;
+  // print(u.getpass());
+  print(u._username);
+  print(u._password);
 }
