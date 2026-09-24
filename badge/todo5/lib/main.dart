@@ -6,7 +6,7 @@ import 'package:todo5/model/model.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(ModelAdapter());
+  Hive.registerAdapter(TodoModelAdapter());
   await Hive.openBox<TodoModel>('open');
   runApp(const MyApp());
 }

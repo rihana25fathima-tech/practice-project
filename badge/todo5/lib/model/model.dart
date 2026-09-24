@@ -7,9 +7,12 @@ class TodoModel {
   String title;
 @HiveField(1)
   String description;
+@HiveField(2)
+  bool isCompleted;
 
   TodoModel({
     required this.title,
     required this.description,
+    this.isCompleted = false,
   });
 }
