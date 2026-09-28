@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monday/details.dart';
 import 'package:monday/model/mode.dart';
 import 'package:monday/service/service.dart';
 
@@ -22,7 +23,7 @@ class _HomepageState extends State<Homepage> {
       title: titlecontroller.text,
       description: descontroller.text,
     );
-    service.savednote(notemodel);
+   await service.savednote(notemodel);
     idcontroller.clear();
     titlecontroller.clear();
     descontroller.clear();
@@ -69,6 +70,7 @@ class _HomepageState extends State<Homepage> {
             ElevatedButton(
               onPressed: () {
                 savee();
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Details(),));
               },
               child: Text("save"),
             ),
