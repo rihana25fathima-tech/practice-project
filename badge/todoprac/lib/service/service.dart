@@ -13,5 +13,12 @@ class Todoservice{
  List<Todomodel>todolist(){
   return todobox.values.toList();
  }
-
+//update
+Future<void>todoupdate(int index,Todomodel model){
+  return todobox.putAt(index, model);
+}
+//delet
+Future<void>tododelete(int index){
+  return todobox.deleteAt(index);
+}
 }

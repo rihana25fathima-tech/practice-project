@@ -7,7 +7,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TodomodelAdapter());
-  await Hive.openBox<Todomodel>('open');
+await Hive.openBox<Todomodel>('open');
   runApp(const MyApp());
 }
 

@@ -16,24 +16,28 @@ class _HomepageState extends State<Homepage> {
   final service = Bloodservice();
   List<Bllodmodel> mode = [];
 
- //update
- void update(int index){
-  final  bllodmodel = Bllodmodel(name: nameController.text, age: ageController.text, bloodgroup: bloodGroupController.text);
-  service.updateblood(index, bllodmodel);
-  nameController.clear();
-  ageController.clear();
-  bloodGroupController.clear();
-  setState(() {
-    list();
-  });
- }
- //update function
+  //update
+  void update(int index) {
+    final bllodmodel = Bllodmodel(
+      name: nameController.text,
+      age: ageController.text,
+      bloodgroup: bloodGroupController.text,
+    );
+    service.updateblood(index, bllodmodel);
+    nameController.clear();
+    ageController.clear();
+    bloodGroupController.clear();
+    setState(() {
+      list();
+    });
+  }
+  //update function
 
- void updatefunc(int index){
-  nameController.text = mode[index].name;
-  ageController.text = mode[index].age;
-  bloodGroupController.text = mode[index].bloodgroup;
-   showDialog(
+  void updatefunc(int index) {
+    nameController.text = mode[index].name;
+    ageController.text = mode[index].age;
+    bloodGroupController.text = mode[index].bloodgroup;
+    showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
@@ -85,7 +89,8 @@ class _HomepageState extends State<Homepage> {
         );
       },
     );
- }
+  }
+
   //delete
   void delete(int index) {
     service.deleteblood(index);
@@ -195,12 +200,14 @@ class _HomepageState extends State<Homepage> {
                   },
                   icon: Icon(Icons.delete),
                 ),
-                IconButton(onPressed: () {
-                  updatefunc(index);
-                }, icon: Icon(Icons.update))
+                IconButton(
+                  onPressed: () {
+                    updatefunc(index);
+                  },
+                  icon: Icon(Icons.update),
+                ),
               ],
             ),
-            
           );
         },
       ),

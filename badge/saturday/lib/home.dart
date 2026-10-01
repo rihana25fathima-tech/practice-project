@@ -11,7 +11,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   final service = Bloodservice();
-  List<BloodModel>mode = [];
+  List<BloodModel> mode = [];
   TextEditingController namecontroller = TextEditingController();
   TextEditingController agecontroller = TextEditingController();
   TextEditingController groupcontroller = TextEditingController();
@@ -31,16 +31,18 @@ class _HomepageState extends State<Homepage> {
       list();
     });
   }
+
   //list
-  void list(){
-   mode = service.getblood();
+  void list() {
+    mode = service.getblood();
   }
+
   //delete
-  void delete(int index)async{
-  await service.deletblood(index);
-  setState(() {
-    list();
-  });
+  void delete(int index) async {
+    await service.deletblood(index);
+    setState(() {
+      list();
+    });
   }
 
   @override
@@ -73,24 +75,34 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
           SizedBox(height: 20),
-          ElevatedButton(onPressed: () {
-            saved();
-          }, child: Text("save")),
-      
-          Expanded(child:
-              ListView.builder(itemBuilder: (context, index) {
-                return ListTile(title:Text(mode[index].name) ,
-                subtitle: Text(" ${mode[index].age}\n ${ mode[index].bloodgroup}"),
-                trailing: IconButton(onPressed: () {
-                  delete(index);
-                }, icon: Icon(Icons.delete)),
+          ElevatedButton(
+            onPressed: () {
+              saved();
+            },
+            child: Text("save"),
+          ),
+
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(mode[index].name),
+                  subtitle: Text(
+                    " ${mode[index].age}\n ${mode[index].bloodgroup}",
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      delete(index);
+                    },
+                    icon: Icon(Icons.delete),
+                  ),
                 );
-              },itemCount: mode.length,)
-        
-          )
-        ]
-      )
+              },
+              itemCount: mode.length,
+            ),
+          ),
+        ],
+      ),
     );
   }
-  }
-
+}
