@@ -16,6 +16,15 @@ class _HomepageState extends State<Homepage> {
   final service = Bloodservice();
   List<Bllodmodel> mode = [];
 
+
+  //bool
+  void bool(int index){
+    mode[index].iscomplete = !mode[index].iscomplete;
+    service.updateblood(index, mode[index]);
+    setState(() {
+      list();
+    });
+  }
   //update
   void update(int index) {
     final bllodmodel = Bllodmodel(
@@ -189,6 +198,9 @@ class _HomepageState extends State<Homepage> {
         itemCount: mode.length,
         itemBuilder: (context, index) {
           return ListTile(
+            leading: Checkbox(value: mode[index].iscomplete, onChanged: (value) {
+              bool(index);
+            },),
             title: Text(mode[index].name),
             subtitle: Text("${mode[index].age} ${mode[index].bloodgroup}"),
             trailing: Row(
