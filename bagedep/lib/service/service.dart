@@ -11,4 +11,12 @@ Future<void>settodo(Todomodel model){
 List<Todomodel>listtodo(){
    return oobox.values.toList();
 }
+
+void deletetodo(int index){
+  oobox.deleteAt(index);
+}
+
+void updatetodo(int index,Todomodel model){
+  oobox.putAt(index, model);
+}
 }
